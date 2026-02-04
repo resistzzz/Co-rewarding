@@ -2,23 +2,27 @@
 <h1 align="center"><b>Co-rewarding: Stable Self-supervised RL for Eliciting Reasoning in Large Language Models</b></h1>
 
 <p align="center">
-  <a href="https://arxiv.org/pdf/2508.00410">
-    <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2508.00410-b31b1b?logo=arxiv&logoColor=white" height="20">
+  <a href="https://openreview.net/pdf?id=fDk95XPsCU">
+    <img alt="ICLR2026" src="https://img.shields.io/badge/ICLR-2026-4b44ce?logo=openreview&logoColor=white" height="20">
   </a>
   &nbsp;&nbsp;
-  <a href="paper/Co-rewarding.pdf">
+  <a href="https://openreview.net/pdf?id=fDk95XPsCU">
     <img alt="Paper" src="https://img.shields.io/badge/Paper-Read-blue?logo=readthedocs&logoColor=white" height="20">
   </a>
   &nbsp;&nbsp;
   <a href="https://github.com/resistzzz/Co-rewarding/stargazers">
     <img alt="GitHub Stars" src="https://img.shields.io/github/stars/resistzzz/Co-rewarding?style=social" height="20">
   </a>
+  &nbsp;&nbsp;
+  <a href="https://huggingface.co/collections/TMLR-Group-HF/co-rewarding">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/HuggingFace-Model-yellow?logo=huggingface&logoColor=white" height="20">
+  </a>
 </p>
 
 
 ![Co-rewarding Framework](figs/Method.png)
 
-**Co-rewarding** is a novel self-supervised RL framework that improves training stability by seeking complementary supervision from another views. Specifically, we instantiate Co-rewarding in two ways: (1) **Co-rewarding-I** is a data-side instantiation that derives reward signals from contrastive agreement across semantically analogous questions; and (2) **Co-rewarding-II** is a model-side instantiation that maintains a slowly-updated reference teacher with pseudo labels to realize self-distillation. Intuitively, such instantiations introduce different levels of discrepancy to increase the difficulty of training collapse on trivial reasoning solutions.
+**Co-rewarding** is a novel self-supervised RL framework that improves training stability by seeking complementary supervision from another views. Specifically, we instantiate Co-rewarding in two ways: (1) **Co-rewarding-I** is a data-side instantiation that derives reward signals from contrastive agreement across semantically analogous questions; (2) **Co-rewarding-II** is a model-side instantiation that maintains a slowly-updated reference teacher with pseudo labels to realize self-distillation. Intuitively, such instantiations introduce different levels of discrepancy to increase the difficulty of training collapse on trivial reasoning solutions; and (3) **Co-rewarding-III** is a combined instantiation that both consider data-side cross-reference and model-side self-distillation for boosting performance.
 
 
 ### Install Environment
@@ -57,6 +61,10 @@ bash run_corewarding-I.sh
 # Co-rewarding-II
 cd Co-rewarding-II
 bash run_corewarding-II.sh
+
+# Co-rewarding-III
+cd Co-rewarding-III
+bash run_corewarding-III.sh
 ```
 
 ### Preprocess the training set
@@ -141,6 +149,9 @@ We release all checkpoints trained by us, including our Co-rewarding-I, Co-rewar
 | TMLR-Group-HF/Co-rewarding-II-Qwen3-4B-Base-MATH | 4B | Co-rewarding-II | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-II-Qwen3-4B-Base-MATH) |
 | TMLR-Group-HF/Co-rewarding-II-Qwen3-8B-Base-MATH | 8B | Co-rewarding-II | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-II-Qwen3-8B-Base-MATH) |
 | TMLR-Group-HF/Co-rewarding-II-Llama-3.2-3B-Instruct-MATH | 3B | Co-rewarding-II | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-II-Llama-3.2-3B-Instruct-MATH) |
+| TMLR-Group-HF/Co-rewarding-III-Qwen3-8B-Base-MATH | 8B | Co-rewarding-III | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-III-Qwen3-8B-Base-MATH) |
+| TMLR-Group-HF/Co-rewarding-III-Qwen3-4B-Base-MATH | 4B | Co-rewarding-III | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-III-Qwen3-4B-Base-MATH) |
+| TMLR-Group-HF/Co-rewarding-III-Llama-3.2-3B-Instruct-MATH | 3B | Co-rewarding-III | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-III-Llama-3.2-3B-Instruct-MATH) |
 | --- | --- | --- | --- |
 | TMLR-Group-HF/GT-Qwen2.5-3B-MATH | 3B | GT-GRPO | [View Model](https://huggingface.co/TMLR-Group-HF/GT-Qwen2.5-3B-MATH) |
 | TMLR-Group-HF/GT-Qwen2.5-7B-MATH | 7B | GT-GRPO | [View Model](https://huggingface.co/TMLR-Group-HF/GT-Qwen2.5-7B-MATH) |
@@ -181,6 +192,9 @@ We release all checkpoints trained by us, including our Co-rewarding-I, Co-rewar
 | TMLR-Group-HF/Co-rewarding-II-Qwen3-4B-Base-DAPO14k | 4B | Co-rewarding-II | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-II-Qwen3-4B-Base-DAPO14k) |
 | TMLR-Group-HF/Co-rewarding-II-Qwen3-8B-Base-DAPO14k | 8B | Co-rewarding-II | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-II-Qwen3-8B-Base-DAPO14k) |
 | TMLR-Group-HF/Co-rewarding-II-Llama-3.2-3B-Instruct-DAPO14k | 3B | Co-rewarding-II | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-II-Llama-3.2-3B-Instruct-DAPO14k) |
+| TMLR-Group-HF/Co-rewarding-III-Qwen3-4B-Base-DAPO14k | 4B | Co-rewarding-III | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-III-Qwen3-4B-Base-DAPO14k) |
+| TMLR-Group-HF/Co-rewarding-III-Qwen3-8B-Base-DAPO14k | 8B | Co-rewarding-III | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-III-Qwen3-8B-Base-DAPO14k) |
+| TMLR-Group-HF/Co-rewarding-III-Llama-3.2-3B-Instruct-DAPO14k | 3B | Co-rewarding-III | [View Model](https://huggingface.co/TMLR-Group-HF/Co-rewarding-III-Llama-3.2-3B-Instruct-DAPO14k) |
 | --- | --- | --- | --- |
 | TMLR-Group-HF/GT-Qwen3-4B-Base-DAPO14k | 4B | GT-GRPO | [View Model](https://huggingface.co/TMLR-Group-HF/GT-Qwen3-4B-Base-DAPO14k) |
 | TMLR-Group-HF/GT-Qwen3-8B-Base-DAPO14k | 8B | GT-GRPO | [View Model](https://huggingface.co/TMLR-Group-HF/GT-Qwen3-8B-Base-DAPO14k) |
